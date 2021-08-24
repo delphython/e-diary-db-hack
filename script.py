@@ -77,15 +77,9 @@ def get_lesson(schoolkid, subject_title):
         year_of_study=schoolkid.year_of_study,
         group_letter=schoolkid.group_letter,
         subject__title=subject_title
-    ).count()
+    ).order_by("?").first()
 
     lesson_number = random.randrange(1, lessons_count - 1)
-
-    lesson = Lesson.objects.filter(
-        year_of_study=schoolkid.year_of_study,
-        group_letter=schoolkid.group_letter,
-        subject__title=subject_title
-    )[lesson_number]
 
     return lesson
 

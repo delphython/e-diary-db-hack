@@ -73,13 +73,11 @@ def create_commendation(schoolkid, lesson):
 
 
 def get_lesson(schoolkid, subject_title):
-    lessons_count = Lesson.objects.filter(
+    lesson = Lesson.objects.filter(
         year_of_study=schoolkid.year_of_study,
         group_letter=schoolkid.group_letter,
         subject__title=subject_title
     ).order_by("?").first()
-
-    lesson_number = random.randrange(1, lessons_count - 1)
 
     return lesson
 

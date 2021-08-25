@@ -89,18 +89,17 @@ def get_parsed_args():
     )
 
     parser.add_argument("schoolkid_full_name", type=str, help="ФИО ученика в кавычках")
-    parser.add_argument("subject", type=str, help="Наименвоание предмета")
-    return [
-        parser.parse_args().schoolkid_full_name,
-        parser.parse_args().subject,
-    ]
+    parser.add_argument("subject_title", type=str, help="Наименвоание предмета")
+
+    return vars(parser.parse_args())
 
 
 def main():
-    schoolkid_full_name, subject_title = get_parsed_args()
+    schoolkid_full_name = get_parsed_args()["schoolkid_full_name"]
+    subject_title = get_parsed_args()["subject_title"]
 
     try:
-        subject = Subject.objects.filter(title=subject_title)[:1].get()
+        subject = Subject.objects.filter(title=subject_title).first()
     except Subject.DoesNotExist:
         sys.exit(f"В базе данных нет предмета с названием {subject_title}!")
 

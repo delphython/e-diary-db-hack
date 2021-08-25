@@ -91,12 +91,13 @@ def get_parsed_args():
     parser.add_argument("schoolkid_full_name", type=str, help="ФИО ученика в кавычках")
     parser.add_argument("subject_title", type=str, help="Наименвоание предмета")
 
-    return vars(parser.parse_args())
+    return parser.parse_args()
 
 
 def main():
-    schoolkid_full_name = get_parsed_args()["schoolkid_full_name"]
-    subject_title = get_parsed_args()["subject_title"]
+    args = get_parsed_args()
+    schoolkid_full_name = args.schoolkid_full_name
+    subject_title = args.subject_title
 
     try:
         subject = Subject.objects.filter(title=subject_title).first()

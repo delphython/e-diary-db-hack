@@ -18,7 +18,7 @@
 
 Для запуска скрипта необходимо в консоли перейти в каталог, где лежит файл скрипта и запустить команду:
 ```sh
-python script.py schoolkid_full_name subject__title
+python script.py schoolkid_full_name subject_title
 ```
 где `schoolkid_full_name` - ФИО ученика в кавычках, `subject - наименование предмета.
 Пример:

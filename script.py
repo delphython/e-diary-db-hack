@@ -99,9 +99,8 @@ def main():
     schoolkid_full_name = args.schoolkid_full_name
     subject_title = args.subject_title
 
-    try:
-        subject = Subject.objects.filter(title=subject_title).first()
-    except Subject.DoesNotExist:
+    subject = Subject.objects.filter(title=subject_title).first()
+    if subject is None:
         sys.exit(f"В базе данных нет предмета с названием {subject_title}!")
 
     try:
